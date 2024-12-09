@@ -1,0 +1,26 @@
+{% extends "template.html" %}
+{% block title %}Listando Pessoas{% endblock %}
+{% block content %}
+    <h2>Listando Pessoas do sistema</h2>
+    <table class="table table-bordered">
+        <tr>
+            <th>cód:</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+    {% for p in peoples %}
+        <tr>
+            <td>{{p.id}}</td>
+            <td>{{p.fullname}}</td>
+            <td>{{p.years}}</td>
+            <td>{{p.email}}</td>    
+            <td>
+               <a href="{% url 'editar' p.id %}" class="link-primary link-underline-opacity-0">Editar</a>
+               <a href="{% url 'apagar' p.id %}" class="link-danger link-underline-opacity-0">Apagar</a>
+            </td>    
+        </tr>
+    {% endfor%}
+    </table>
+    {% endblock %}
